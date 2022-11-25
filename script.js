@@ -2,7 +2,8 @@ window.addEventListener("load", function(){
     fetch("https://handlers.education.launchcode.org/static/astronauts.json").then(function(response) {
         response.json().then(function(json) {
             const container = document.getElementById("container");
-            for(const astronautData of json) {
+            const sorted = json.sort(sortByProperty("hoursInSpace"));
+            for(const astronautData of sorted) {
                 let astronaut = listAstronaut(astronautData)
                 container.innerHTML = container.innerHTML += astronaut;
             }
@@ -25,4 +26,15 @@ function listAstronaut(astronautData) {
                 </div>
                 `
                 return astronaut;
+}
+
+function sortByProperty(property) {
+    return function(a,b){
+        if(a[property]>b[property]){
+            return 1;
+        } else if (a[property]<b[property]){
+            return -1;
+        }
+        return 0;
+    }
 }
