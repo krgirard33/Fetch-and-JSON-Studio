@@ -5,11 +5,14 @@ window.addEventListener("load", function () {
     response.json().then(function (json) {
       const container = document.getElementById("container");
       const sorted = json.sort(sortByProperty("hoursInSpace"));
+      let count = astronautCount(sorted);
       for (const astronautData of sorted) {
         let astronaut = listAstronaut(astronautData);
         container.innerHTML = container.innerHTML += astronaut;
       }
       activeIsGreen();
+      container.innerHTML = container.innerHTML += count;
+
     });
   });
 });
@@ -51,4 +54,13 @@ function activeIsGreen() {
       element.style.textTransform = "capitalize";
     }
   }
+}
+
+function astronautCount(data) {
+    let astroCount = `
+    <div class="count">
+        <h3>There are ${data.length} astronauts listed.</h2>
+    </div>
+    `
+    return astroCount;
 }
