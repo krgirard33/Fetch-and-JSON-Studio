@@ -57,10 +57,20 @@ function activeIsGreen() {
 }
 
 function astronautCount(data) {
+    let avgHrs = averageHrs(data)
     let astroCount = `
     <div class="count">
-        <h3>There are ${data.length} astronauts listed.</h2>
+        <p>For the ${data.length} astronauts listed, the average time in space is: ${avgHrs} hrs</p>
     </div>
     `
     return astroCount;
+}
+
+function averageHrs(data) {
+    let hrs = 0;
+    for(const astronaut of data) {
+        hrs = astronaut.hoursInSpace + hrs
+    }
+    let avgHrs = (hrs/data.length).toFixed(2);
+    return avgHrs;
 }
