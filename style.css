@@ -13,4 +13,23 @@
     padding: 5px;
     margin-bottom: 20px;
     border-radius: 6px;
+    background-color: whitesmoke;
+}
+
+.count {
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+    width: 500px;
+    align-items: center;
+    padding: 5px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    background-color: rgba(20, 4, 80, 0.75);
+    color:whitesmoke;
+}
+
+body {
+    background-color: rgb(220, 244, 245);
+    Font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
 }
